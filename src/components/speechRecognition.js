@@ -15,13 +15,12 @@ function translate(term, fromLang, toLang) {
 
 export default () => {
   const { speechState: {listening, fromLang, toLang}, updateLastSpoken, addTranslationResult } = useSpeechContext()
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  const recognition = new SpeechRecognition();
-  recognition.interimResults = true;
-  recognition.lang = fromLang;
   useEffect(() => {
     if(!listening) return
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.interimResults = true;
+    recognition.lang = fromLang;
     const handleResult = async (e) => {
       if (e.results[0].isFinal) {
         const result = e.results[0][0].transcript;
