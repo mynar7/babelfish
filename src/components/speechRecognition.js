@@ -4,10 +4,11 @@ import { useSpeechContext } from './providers/speechProvider'
 
 
 function translate(term, fromLang, toLang) {
-  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${fromLang}&tl=${toLang}&dt=t&q=${term}`;
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${fromLang}&tl=${toLang}&dt=t&q=${term}&dt=rm`;
   return fetch(url)
   .then(res => res.json())
   .then(res => {
+      console.log(res)
       return res[0][0][0] ? res[0][0][0] : null
   })
   .catch(err => console.log(err));
@@ -24,6 +25,7 @@ export default () => {
     const handleResult = async (e) => {
       if (e.results[0].isFinal) {
         const result = e.results[0][0].transcript;
+        console.log(e.results[0])
         updateLastSpoken(result)
         const translation = await translate(result, fromLang, toLang);
         addTranslationResult(translation)
