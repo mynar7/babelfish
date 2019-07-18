@@ -8,7 +8,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { SpeechProvider } from './providers/speechProvider'
 import SpeechRecognition from './speechRecognition'
 import Header from "./header"
 import "./layout.css"
@@ -25,7 +24,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <SpeechProvider>
+    <>
       <SpeechRecognition />
       <div className="font-serif">
         <Header siteTitle={data.site.siteMetadata.title} />
@@ -33,7 +32,7 @@ const Layout = ({ children }) => {
           <main>{children}</main>
         </div>
       </div>
-    </SpeechProvider>
+    </>
   )
 }
 

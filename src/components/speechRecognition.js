@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useSpeechContext } from './providers/speechProvider'
 
 
@@ -15,7 +15,7 @@ function translate(term, fromLang, toLang) {
 }
 
 export default () => {
-  const { speechState: {listening, fromLang, toLang}, updateLastSpoken, addTranslationResult } = useSpeechContext()
+  const { speechState: {listening, fromLang: {code: fromLang}, toLang: {code: toLang}}, updateLastSpoken, addTranslationResult } = useSpeechContext()
   useEffect(() => {
     if(!listening) return
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -32,17 +32,18 @@ export default () => {
       }
     }
     const restartListener = () => {
+      if(fromLang === '' || toLang === '') return
       recognition.start()
     }
     recognition.addEventListener('result', handleResult)
-    recognition.addEventListener('end', restartListener);
+    recognition.addEventListener('end', restartListener)
+    if(fromLang === '' || toLang === '') return
     recognition.start()
     return () => {
       if(!listening) return
       recognition.removeEventListener('result', handleResult)
       recognition.removeEventListener('end', restartListener)
     }
-  }, [listening])
-
+  }, [listening, fromLang, toLang])
   return null
 }

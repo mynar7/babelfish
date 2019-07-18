@@ -15,11 +15,11 @@ function reducer(state, action) {
       }
     case 'setFromLang':
       return {
-        ...state, fromLang: payload
+        ...state, fromLang: { name: payload.name, code: payload.code }
       }
     case 'setToLang':
       return {
-        ...state, toLang: payload
+        ...state, toLang: { name: payload.name, code: payload.code }
       }
     case 'toggleListening':
       return {
@@ -42,8 +42,14 @@ function useSpeechContext() {
 
 function SpeechProvider(props) {
   const [speechState, dispatch] = useReducer(reducer, {
-    fromLang: 'en',
-    toLang: 'ja',
+    fromLang: {
+      name: 'English',
+      code: 'en',
+    },
+    toLang: {
+      name: 'Japanese',
+      code: 'ja',
+    },
     lastSpoken: '',
     listening: false,
     results: []
@@ -55,10 +61,18 @@ function SpeechProvider(props) {
     dispatch({type: 'addResult', payload: result})
   }
   function setFromLang(isoLangCode) {
+    console.log('setting ', isoLangCode)
     dispatch({type: 'setFromLang', payload: isoLangCode})
   }
+  function clearFromLang() {
+    dispatch({type: 'setFromLang', payload: {name: '', code: ''}})
+  }
   function setToLang(isoLangCode) {
+    console.log('setting ', isoLangCode)
     dispatch({type: 'setToLang', payload: isoLangCode})
+  }
+  function clearToLang() {
+    dispatch({type: 'setToLang', payload: {name: '', code: ''}})
   }
   function toggleListening() {
     dispatch({type: 'toggleListening'})
@@ -68,7 +82,9 @@ function SpeechProvider(props) {
     updateLastSpoken,
     addTranslationResult,
     setFromLang,
+    clearFromLang,
     setToLang,
+    clearToLang,
     toggleListening,
   }
 
