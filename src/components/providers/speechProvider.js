@@ -11,7 +11,12 @@ function reducer(state, action) {
     case 'addResult':
       return {
         ...state,
-        results: [...state.results, { spoken: state.lastSpoken, translated: payload }]
+        results: [...state.results, {
+          fromLang: state.fromLang.name,
+          toLang: state.toLang.name,
+          spoken: state.lastSpoken,
+          translated: payload
+        }]
       }
     case 'setFromLang':
       return {
@@ -35,7 +40,7 @@ const SpeechContext = createContext()
 function useSpeechContext() {
   const context = useContext(SpeechContext)
   if(!context) {
-    throw new Error(`useSpeechProvider must be used within a SpeechProvider`)
+    // throw new Error(`useSpeechProvider must be used within a SpeechProvider`)
   }
   return context
 }
@@ -61,14 +66,12 @@ function SpeechProvider(props) {
     dispatch({type: 'addResult', payload: result})
   }
   function setFromLang(isoLangCode) {
-    console.log('setting ', isoLangCode)
     dispatch({type: 'setFromLang', payload: isoLangCode})
   }
   function clearFromLang() {
     dispatch({type: 'setFromLang', payload: {name: '', code: ''}})
   }
   function setToLang(isoLangCode) {
-    console.log('setting ', isoLangCode)
     dispatch({type: 'setToLang', payload: isoLangCode})
   }
   function clearToLang() {

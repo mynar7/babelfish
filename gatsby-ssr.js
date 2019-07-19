@@ -5,3 +5,13 @@
  */
 
 // You can delete this file if you're not using it
+import React from "react"
+import { SpeechProvider } from './src/components/providers/speechProvider'
+
+export const wrapRootElement = ({ element }) => {
+  return (
+    <SpeechProvider>
+      {element}
+    </SpeechProvider>
+  )
+}

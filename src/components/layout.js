@@ -8,7 +8,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import SpeechRecognition from './speechRecognition'
 import Header from "./header"
 import "./layout.css"
 
@@ -24,15 +23,12 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <SpeechRecognition />
-      <div className="font-serif">
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div className="container mx-auto">
-          <main>{children}</main>
-        </div>
+    <div className="font-serif w-screen">
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <div className="w-screen">
+        <main>{children}</main>
       </div>
-    </>
+    </div>
   )
 }
 
