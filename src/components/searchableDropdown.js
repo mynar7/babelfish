@@ -1,14 +1,16 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 
 export default ({listName, list = [], action, currentValue, clearAction}) => {
   const inputEl = useRef(null)
 
+  useEffect(() => {
+    inputEl.current.value = currentValue
+  }, [currentValue])
+
   function handleChange(value) {
-    console.log(value)
-    inputEl.current.value = value
+    // inputEl.current.value = value
     const listItem = list.find((item) => item.name === value)
-    console.log(listItem)
     if (listItem)
       action(listItem)
   }
@@ -19,7 +21,7 @@ export default ({listName, list = [], action, currentValue, clearAction}) => {
   }
 
   return (
-    <div className="flex flex-wrap m-4 items-center w-64">
+    <div className="flex flex-wrap mx-4 my-1 items-center w-64">
       <label className="mr-2" htmlFor={listName + '-input'}>{listName}</label>
       <div className="flex">
         <input ref={inputEl} placeholder={currentValue} className="border-solid border p-1 border-gray-600" list={listName} name={listName + '-input'} onChange={(e) => handleChange(e.target.value)}/>

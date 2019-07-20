@@ -12,8 +12,8 @@ function reducer(state, action) {
       return {
         ...state,
         results: [...state.results, {
-          fromLang: state.fromLang.name,
-          toLang: state.toLang.name,
+          fromLang: state.fromLang,
+          toLang: state.toLang,
           spoken: state.lastSpoken,
           translated: payload
         }]
