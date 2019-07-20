@@ -14,7 +14,9 @@ export default () => {
             <p className="flex justify-between"><strong>{fromLang.name}: </strong>{spoken}</p>
             <p  className="flex justify-between">
               <strong className="mr-4">{toLang.name}: </strong>
-              <span>{translated.native} <TranslationReader lang={toLang} translation={translated.native} /></span>
+              <span className="flex">
+                {translated.native} <TranslationReader lang={toLang} translation={translated.native} />
+              </span>
             </p>
             {translated.romanized && <p  className="flex justify-between"><strong>Romanization: </strong>{translated.romanized}</p>}
           </div>

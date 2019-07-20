@@ -5,7 +5,7 @@ export default function translate(term, fromLang, toLang) {
     .then(res => {
         const translation = {
           native: res[0][0][0],
-          romanized: res[0][1][2],
+          romanized: res[0][1] ? res[0][1][2] : null,
         }
         return translation.native ? translation : null
     })
