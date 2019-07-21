@@ -19,6 +19,7 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
+            logo
           }
         }
       }
@@ -50,6 +51,18 @@ function SEO({ description, lang, meta, title }) {
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: `og:image`,
+          content: site.siteMetadata.logo,
+        },
+        {
+          property: `twitter:image`,
+          content: site.siteMetadata.logo,
+        },
+        {
+          property: `twitter:alt:image`,
+          content: 'A fish and a microphone',
         },
         {
           name: `twitter:card`,

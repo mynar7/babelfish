@@ -4,6 +4,8 @@ module.exports = {
     title: `Babelfish`,
     description: `A spoken translation app`,
     author: `Lee Warrick`,
+    siteUrl: `https://leewarrick.com/babelfish`,
+    logo: `https://leewarrick.com/babelfish/logo.png`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
