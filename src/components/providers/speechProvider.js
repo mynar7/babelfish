@@ -58,36 +58,36 @@ function SpeechProvider(props) {
     lastSpoken: '',
     listening: false,
     results: [
-      {
-        fromLang: {
-          name: 'English',
-          code: 'en',
-        },
-        toLang: {
-          name: 'Japanese',
-          code: 'ja',
-        },
-        spoken: 'banana rama banana rama banana rama banana rama banana rama banana rama',
-        translated: {
-          native: 'バナナバナナバナナバナナバナナバナナバナナバナナバナナバナナバナナバナナバナナ',
-          romanized: 'banana banana banana banana banana banana banana banana banana banana banana'
-        }
-      },
-      {
-        fromLang: {
-          name: 'English',
-          code: 'en',
-        },
-        toLang: {
-          name: 'Japanese',
-          code: 'ja',
-        },
-        spoken: 'banana',
-        translated: {
-          native: 'バナナ',
-          romanized: 'banana'
-        }
-      },
+      // {
+      //   fromLang: {
+      //     name: 'English',
+      //     code: 'en',
+      //   },
+      //   toLang: {
+      //     name: 'Japanese',
+      //     code: 'ja',
+      //   },
+      //   spoken: 'banana rama banana rama banana rama banana rama banana rama banana rama',
+      //   translated: {
+      //     native: 'バナナバナナバナナバナナバナナバナナバナナバナナバナナバナナバナナバナナバナナ',
+      //     romanized: 'banana banana banana banana banana banana banana banana banana banana banana'
+      //   }
+      // },
+      // {
+      //   fromLang: {
+      //     name: 'English',
+      //     code: 'en',
+      //   },
+      //   toLang: {
+      //     name: 'Japanese',
+      //     code: 'ja',
+      //   },
+      //   spoken: 'banana',
+      //   translated: {
+      //     native: 'バナナ',
+      //     romanized: 'banana'
+      //   }
+      // },
     ]
   })
   function updateLastSpoken(lastSpokenPhrase) {
