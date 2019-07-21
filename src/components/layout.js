@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <div className="font-serif w-screen">
+    <div className="font-serif w-screen h-screen flex flex-col">
       <Header siteTitle={data.site.siteMetadata.title} />
       <div className="w-screen">
         <main>{children}</main>

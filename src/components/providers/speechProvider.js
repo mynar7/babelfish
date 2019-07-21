@@ -30,6 +30,10 @@ function reducer(state, action) {
       return {
         ...state, listening: !state.listening
       }
+    case 'clearResults':
+      return {
+        ...state, results: []
+      }
     default:
       return state
   }
@@ -57,38 +61,7 @@ function SpeechProvider(props) {
     },
     lastSpoken: '',
     listening: false,
-    results: [
-      // {
-      //   fromLang: {
-      //     name: 'English',
-      //     code: 'en',
-      //   },
-      //   toLang: {
-      //     name: 'Japanese',
-      //     code: 'ja',
-      //   },
-      //   spoken: 'banana rama banana rama banana rama banana rama banana rama banana rama',
-      //   translated: {
-      //     native: 'バナナバナナバナナバナナバナナバナナバナナバナナバナナバナナバナナバナナバナナ',
-      //     romanized: 'banana banana banana banana banana banana banana banana banana banana banana'
-      //   }
-      // },
-      // {
-      //   fromLang: {
-      //     name: 'English',
-      //     code: 'en',
-      //   },
-      //   toLang: {
-      //     name: 'Japanese',
-      //     code: 'ja',
-      //   },
-      //   spoken: 'banana',
-      //   translated: {
-      //     native: 'バナナ',
-      //     romanized: 'banana'
-      //   }
-      // },
-    ]
+    results: []
   })
   function updateLastSpoken(lastSpokenPhrase) {
     dispatch({type: 'updateLastSpoken', payload: lastSpokenPhrase})
@@ -111,6 +84,9 @@ function SpeechProvider(props) {
   function toggleListening() {
     dispatch({type: 'toggleListening'})
   }
+  function clearResults() {
+    dispatch({type: 'clearResults'})
+  }
   const sharedValues = {
     speechState,
     updateLastSpoken,
@@ -120,6 +96,7 @@ function SpeechProvider(props) {
     setToLang,
     clearToLang,
     toggleListening,
+    clearResults,
   }
 
   return <SpeechContext.Provider value={sharedValues} {...props}/>

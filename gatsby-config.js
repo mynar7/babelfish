@@ -46,8 +46,8 @@ module.exports = {
         name: `Babelfish`,
         short_name: `Babelfish`,
         start_url: `/babelfish/`,
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
+        background_color: `#6a46c1`,
+        theme_color: `#6a46c1`,
         display: `standalone`,
         icon: `src/images/icon.png`
       },

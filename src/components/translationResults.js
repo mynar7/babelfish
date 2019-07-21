@@ -28,8 +28,8 @@ export default () => {
           </div>
         ))
         : speechState.toLang.name && speechState.fromLang.name
-          ? <p>Press 'Listen' and allow Babelfish to use your microphone to translate your spoken words to {speechState.toLang.name}! (Only works in Chrome)</p>
-          : <p>Please enter languages to translate from/to.</p>
+          ? <p className="text-center">Press 'Listen' and allow Babelfish to use your microphone to translate your spoken words to {speechState.toLang.name}! (Only works in Chrome)</p>
+          : <p className="text-center">Please enter languages to translate from/to.</p>
       }
       </div>
       <div className="h-6"></div>
