@@ -9,11 +9,11 @@ export default () => {
 
     async function handleSubmit(e) {
         e.preventDefault()
-        if (isPaused) return
+        if (isPaused || phrase.length === 0) return
         setPaused(true)
         const translation = await translate(phrase, fromLang, toLang)
         updateLastSpoken(phrase)
-        addTranslationResult(translation)
+        if (translation) addTranslationResult(translation)
         setPhrase('')
         setPaused(false)
     }
@@ -22,7 +22,7 @@ export default () => {
         <form className="flex" onSubmit={handleSubmit}>
             <input className="border-solid border p-1 border-gray-600 rounded m-1" type="text"
             value={phrase}
-            onChange={(e) => setPhrase(e.target.value)} />
+            onChange={(e) => setPhrase(e.target.value.trim())} />
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded m-1">Translate</button>
         </form>
     )

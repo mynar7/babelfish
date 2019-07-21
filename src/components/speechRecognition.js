@@ -15,8 +15,8 @@ export default () => {
       if (e.results[0].isFinal) {
         const result = e.results[0][0].transcript;
         updateLastSpoken(result)
-        const translation = await translate(result, fromLang, toLang);
-        addTranslationResult(translation)
+        const translation = await translate(result, fromLang, toLang)
+        if (translation) addTranslationResult(translation)
       }
     }
     const restartListener = () => {
