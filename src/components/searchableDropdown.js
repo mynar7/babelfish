@@ -24,7 +24,7 @@ export default ({listName, list = [], action, currentValue, clearAction}) => {
     <div className="flex flex-wrap mx-4 my-1 items-center w-64">
       <label className="mr-2" htmlFor={listName + '-input'}>{listName}</label>
       <div className="flex">
-        <input ref={inputEl} placeholder={currentValue} className="border-solid border p-1 border-gray-600" list={listName} name={listName + '-input'} onChange={(e) => handleChange(e.target.value)}/>
+        <input ref={inputEl} placeholder={currentValue} className="border-solid border p-1 border-gray-600 rounded" list={listName} name={listName + '-input'} onChange={(e) => handleChange(e.target.value)}/>
         <datalist id={listName}>
           {list.map((item, index) => (
             <option value={item.name} key={index} label={item.code} />

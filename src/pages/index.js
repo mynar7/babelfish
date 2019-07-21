@@ -9,6 +9,8 @@ import SearchableDropdown from '../components/searchableDropdown'
 import isoLangs from '../components/isoLangs'
 import { useSpeechContext } from '../components/providers/speechProvider'
 import SpeechRecognition from '../components/speechRecognition'
+import TranslateForm from '../components/translateForm'
+import SwapLangBtn from '../components/swapLanguagesBtn'
 
 const IndexPage = () => {
   const { setFromLang, setToLang, clearFromLang, clearToLang, speechState: {toLang, fromLang} } = useSpeechContext()
@@ -25,8 +27,10 @@ const IndexPage = () => {
         <div className="flex justify-center mb-auto">
           <TranslationResults />
         </div>
-        <div className=" sticky bottom-0 pb-4 w-full flex justify-center">
-          <ListenButton/>
+        <div className=" sticky bottom-0 pb-4 w-full flex flex-wrap justify-center">
+          <TranslateForm />
+          <ListenButton />
+          <SwapLangBtn />
         </div>
       </div>
     </Layout>
