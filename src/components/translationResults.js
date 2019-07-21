@@ -28,7 +28,11 @@ export default () => {
           </div>
         ))
         : speechState.toLang.name && speechState.fromLang.name
-          ? <p className="text-center">Press 'Listen' and allow Babelfish to use your microphone to translate your spoken words to {speechState.toLang.name}! (Only works in Chrome)</p>
+          ? <div className="flex flex-col items-center">
+          <p className="text-center mb-2">Tap the microphone icon and allow Babelfish to use your microphone to translate your spoken words to {speechState.toLang.name}! (For best results, use <a className="underline text-blue-600" href="https://caniuse.com/#search=speech">Chrome</a>)</p>
+          <p className="text-center mb-2">Or type in the input field if your browser doesn't support the <a className="underline text-blue-600" href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition">SpeechRecognition</a> API</p>
+          <p className="text-center mb-2">If your browser supports <a className="underline text-blue-600" href="https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API">SpeechSynthesis</a> and has an appropriate voice installed, press the play icon to hear the results!</p>
+          </div>
           : <p className="text-center">Please enter languages to translate from/to.</p>
       }
       </div>

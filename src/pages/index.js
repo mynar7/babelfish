@@ -18,7 +18,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Translate Stuff!" />
       <SpeechRecognition />
       <div className="flex flex-col h-64">
         <div className="flex flex-wrap flex-col justify-center items-center w-full sm:flex-row sm:items-end">
