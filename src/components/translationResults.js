@@ -10,15 +10,21 @@ export default () => {
       {
         speechState.results.length > 0
         ? speechState.results.map(({fromLang, toLang, spoken, translated}, index) => (
-          <div className="m-2" key={index}>
-            <p className="flex justify-between"><strong>{fromLang.name}: </strong>{spoken}</p>
-            <p  className="flex justify-between">
-              <strong className="mr-4">{toLang.name}: </strong>
-              <span className="flex">
+          <div className="mt-2 mx-auto" key={index}>
+            <p>
+              <strong className="mr-2">{fromLang.name}: </strong><span>{spoken}</span>
+            </p>
+            <p>
+              <strong className="mr-2">{toLang.name}: </strong>
+              <span>
                 {translated.native} <TranslationReader lang={toLang} translation={translated.native} />
               </span>
             </p>
-            {translated.romanized && <p  className="flex justify-between"><strong>Romanization: </strong>{translated.romanized}</p>}
+            {translated.romanized &&
+            <p>
+              <strong className="mr-2">Romanized: </strong><span>{translated.romanized}</span>
+            </p>}
+            {index !== 0 && <hr className="h-px bg-green-300"/>}
           </div>
         ))
         : speechState.toLang.name && speechState.fromLang.name

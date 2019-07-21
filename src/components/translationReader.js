@@ -45,7 +45,8 @@ export default ({lang, translation}) => {
     const styles = {
         pointerEvents: isPlaying ? 'none' : 'auto',
         opacity: isPlaying ? 0 : 1,
-        transition: 'opacity 0.2s'
+        transition: 'opacity 0.2s',
+        display: 'inline-block'
     }
     return (
         <span style={styles} onClick={readTranslation}>
