@@ -2,7 +2,7 @@ module.exports = {
   pathPrefix: `/babelfish`,
   siteMetadata: {
     title: `Babelfish`,
-    description: `A spoken translation app`,
+    description: `Babelfish is a spoken translation app`,
     author: `Lee Warrick`,
     siteUrl: `https://leewarrick.com/babelfish`,
     logo: `https://leewarrick.com/babelfish/logo.png`,
